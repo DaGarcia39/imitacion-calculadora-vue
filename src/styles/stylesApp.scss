@@ -1,0 +1,13 @@
+@import './variablesSCSS/variables.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font;
+}
+
+#app {
+    display: flex;
+    border: 1px solid black;
+}

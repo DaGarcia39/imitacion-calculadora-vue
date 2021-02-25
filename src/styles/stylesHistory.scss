@@ -1,0 +1,12 @@
+@import '../variablesSCSS/variables.scss';
+
+.history {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+    .listas {
+        display: flex;
+        justify-content: space-between;
+        width: 350px;
+    }
+}
