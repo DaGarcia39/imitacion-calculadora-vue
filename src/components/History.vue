@@ -12,7 +12,7 @@
                     {{ item.total }}
                     <div class="buttons">
                         <button class="btn btn-outline-danger" @click="deleteHistory(index)">Delete</button>
-                        <button class="btn btn-outline-success" @click="algo(index)">return</button>
+                        <button class="btn btn-outline-success" @click="returnResult(index)">return</button>
                     </div>
                 </b-list-group-item>
             </b-list-group>
@@ -25,13 +25,15 @@ export default {
     name: 'History',
     props: {
         arrayLoaded: Array,
-        enviarAlert: undefined
+        enviarAlert: undefined,
+        localStorageFunction: undefined
     },
     methods: {
         deleteHistory(index) {
             this.arrayLoaded.splice(index, 1);
+            this.localStorageFunction();
         },
-        algo (index) {
+        returnResult (index) {
             this.$emit('returnResult', this.arrayLoaded[index].total);
             this.enviarAlert();
         }

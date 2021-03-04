@@ -22,7 +22,7 @@
     </div>
     <!-- {{firstNumber}} {{operator}} {{secondNumber}} = {{result}} -->
     <div class="bg-info p-3 historyContainer">
-      <History :arrayLoaded="arrayEmpty" :enviarAlert="mostrar" @returnResult="resultInHistory = $event"/>
+      <History :arrayLoaded="arrayEmpty" :enviarAlert="mostrar" @returnResult="resultInHistory = $event" :localStorageFunction="repeatLocalStorage"/>
     </div>
   </div>
 </template>
@@ -78,7 +78,8 @@ export default {
     equal() {
       this.calculate();
       this.temporal_value = 0;
-      this.sendInformation()
+      this.sendInformation();
+      this.repeatLocalStorage();
     },
     calculate() {
       this.value = 0;
@@ -113,6 +114,18 @@ export default {
     },
     mostrar() {
       this.result = this.resultInHistory;
+    },
+    repeatLocalStorage() {
+      localStorage.setItem('calculadore', JSON.stringify(this.arrayEmpty));
+    }
+  },
+  created() {
+    let datosLocalStorage = JSON.parse(localStorage.getItem('calculadore'));
+    console.log(datosLocalStorage);
+    if(datosLocalStorage === null) {
+      this.arrayEmpty = [];
+    } else {
+      this.arrayEmpty = datosLocalStorage;
     }
   }
 }
