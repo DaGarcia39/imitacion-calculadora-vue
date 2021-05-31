@@ -96,7 +96,7 @@ export default {
         case '*':
           this.value = this.firstNumber * this.secondNumber;
           break;
-        case '/':
+        case '/ ':
           this.value = this.firstNumber / this.secondNumber;  
       }
 
